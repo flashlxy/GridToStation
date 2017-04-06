@@ -117,10 +117,7 @@ namespace GridToStation
 
         private static bool DoubleEquals(double a, double b)
         {
-            if (Math.Abs(a - b) < 0.000001)
-                return true;
-            else
-                return false;
+            return Math.Abs(a - b) < 10e-5;
         }
 
         private void Interpolation(M4 m4)
@@ -201,7 +198,6 @@ namespace GridToStation
                             x1val = a + (c - a) * (Stations[i].wd - yarray[i1-1]) / Math.Abs(m4.YDelt);
                             x2val = b + (d - b) * (Stations[i].wd - yarray[i1-1]) / Math.Abs(m4.YDelt);
                             conc[i] = x1val + (x2val - x1val) * (Stations[i].jd - xarray[j1-1]) / m4.XDelt;
-                            //  write(*,'(I3,F8.2,F8.2,F8.2,F8.2,F8.2,F8.2,F8.2)')i,a,b,c,d,x1val,x2val,conc(i)
                         }
                     }
                     else
